@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  post 'blogs/new' => 'blogs#new' 
+  devise_for :users
   resources :blogs, only: [:index, :new, :create, :edit, :update, :destroy] do
     collection do
       post :confirm
