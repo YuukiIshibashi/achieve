@@ -49,3 +49,7 @@ gem 'rails_12factor', group: :production
 gem 'devise'
 gem 'faker'
 gem 'pry-rails'
+
+group :development do
+  gem  'letter_opener'
+end
