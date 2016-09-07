@@ -2,14 +2,14 @@ Rails.application.routes.draw do
 
   # get 'user/index'
 
-  # post 'blogs/new' => 'blogs#new' 
+  # post 'blogs/new' => 'blogs#new'
   devise_for :users
   resources :blogs, only: [:index, :new, :create, :edit, :update, :destroy] do
     collection do
       post :confirm
     end
   end
-  
+
   resources :contacts, only: [:new, :create] do
     collection do
       post :confirm
