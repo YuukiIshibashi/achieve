@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # get 'user/index'
 
   # post 'blogs/new' => 'blogs#new'
