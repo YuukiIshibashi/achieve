@@ -4,7 +4,7 @@
 <h2><%= current_user.name %>さんの情報を編集する</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+  <%= f.error_messages! %>
 
   <div class="field">
     <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "メールアドレス" %>
@@ -14,6 +14,8 @@
     <%= f.text_field :name, class: "form-control", class: "form-control", placeholder: "名前" %>
   </div>
    </br>
+
+  <% if @user.provider.blank? %>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
@@ -28,6 +30,7 @@
   </div>
    </br>
 
+
   <div class="field">
     <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "パスワード（確認）" %>
   </div>
@@ -37,6 +40,14 @@
     <i>(パスワード変更には現在のパスワードが必要です)</i><br />
     <%= f.password_field :current_password, autocomplete: "off", class: "form-control", placeholder: "現在のパスワード" %>
   </div>
+
+ <% end %>
+
+  <div class="field">
+   <%= profile_img(@user) if profile_img(@user) %>
+   <%= f.file_field :avatar %>
+   <%= f.hidden_field :avatar_cache %>
+ </div>
 
   <div class="actions">
     <%= f.submit "登録する", class: "btn btn-primary btn-block" %>
@@ -52,4 +63,3 @@
 
 </div>
 </div>
-

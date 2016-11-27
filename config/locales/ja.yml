@@ -1,4 +1,7 @@
 ja:
+  unauthorized:
+    manage:
+      all: "アクセス権限がありません"
   activerecord:
     errors:
       messages:
