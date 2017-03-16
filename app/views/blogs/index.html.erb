@@ -7,7 +7,7 @@
 <% @blogs.each do |blog| %>
  <div class="row">
   <h4><strong>タイトル:<%= blog.title %></p></strong></h4>
-  <%= profile_img(blog.user)%><br>
+  <p class="user_img"><%= profile_img(blog.user)%></p><br>
   <small>ユーザID:<%= blog.user_id %></small>
   <small>名前:<%= blog.user.name %></small>
 
