@@ -6,7 +6,9 @@
 <%= link_to "ブログを作成する", new_blog_path, class: 'btn btn-default' %>
 <% @blogs.each do |blog| %>
  <div class="row">
-  <h4><strong>タイトル:<%= blog.title %></p></strong></h4>
+   <%= link_to blog_path(blog) do %>
+    <h4><strong><%= blog.title %></strong></h4>
+    <% end %>
   <p class="user_img"><%= profile_img(blog.user)%></p><br>
   <small>ユーザID:<%= blog.user_id %></small>
   <small>名前:<%= blog.user.name %></small>
@@ -21,5 +23,5 @@
 <div id="gototop">
  <div id="gototop2"></div>
 </div>
-</div>
+</div>1
 </div>

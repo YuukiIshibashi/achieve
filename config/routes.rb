@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # get 'user/index'
 
@@ -10,7 +9,8 @@ Rails.application.routes.draw do
   }
   resources :users, only: [:show] do
     end
-  resources :blogs, only: [:index, :new, :create, :edit, :update, :destroy] do
+  resources :blogs, shallow: true do
+    resources :comments
     collection do
       post :confirm
     end
