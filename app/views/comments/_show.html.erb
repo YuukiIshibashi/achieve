@@ -1,0 +1,8 @@
+<p class="left"><%= comment.user.name %>さんがコメントしました。</p>
+<p class="left"><%= comment.content %></p>
+<% if current_user.id == comment.user_id %>
+<p class="right">
+<a class="edit fa fa-pencil-square-o fa-lg" id="<%= comment.id %>"></a>
+<%= link_to '', comment_path(comment), class: "fa fa-trash-o fa-lg", method: :delete, data: { confirm: '本当に削除していいですか？' } %>
+</p>
+<% end %>

@@ -1,6 +1,7 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 <div class="child row">
-  <div class="wrapper col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+  <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
     <div class="blog-text">
       <p class="left"><strong>タイトル</strong></p>
       <p class="left"><%= @blog.title %></p>
@@ -12,9 +13,16 @@
       </p>
     </div>
     <p>コメント一覧</p>
-    <div id="comments_area">
-      <%= render partial: 'comments/index', locals: { comments: @comments, blog: @blog } %>
-    </div>
+
+    <ul id="comments_area">
+      <% @comments.each do |comment| %>
+      <% unless comment.id.nil? %>
+        <li id="<%= comment.id %>">
+            <%= render partial: 'comments/show', locals: { comment: comment, blog: @blog } %>
+        </li>
+        <% end %>
+          <% end %>
+    </ul>
     <div id="form_area">
     <%= render partial: 'comments/form', locals: { comment: @comment, blog: @blog } %>
     </div>
@@ -23,4 +31,5 @@
     <% end %>
     <%= link_to '戻る', blogs_path %>
   </div>
+</div>
 </div>

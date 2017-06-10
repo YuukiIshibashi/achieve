@@ -25,7 +25,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "お問い合わせ", new_contact_path %></li>
-       
+
         <% if user_signed_in?%>
         <li><%= link_to 'マイページ', edit_user_registration_path %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
@@ -47,10 +47,10 @@
 
 <%= yield %>
 
-      <footer>
-            <p>運営会社Dive into Code株式会社</p>
-            <p>© 2015-2016 Copyright Dive into Code Corp.</p>
-      </footer>
+<footer>
+  <p>運営会社Dive into Code株式会社</p>
+  <p>© 2015-2016 Copyright Dive into Code Corp.</p>
+</footer>
 
 </body>
 </html>

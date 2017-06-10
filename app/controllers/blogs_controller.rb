@@ -38,6 +38,7 @@ class BlogsController < ApplicationController
   def show
     @comment = @blog.comments.build
     @comments = @blog.comments
+    @comments = @comments.order("created_at")
   end
 
   def edit
