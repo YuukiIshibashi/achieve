@@ -19,15 +19,17 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment.destroy
-    redirect_to blog_path(@blog), notice: 'コメントを削除しました。'
+    respond_to do |format|
+      @comment.destroy
+      format.html { redirect_to blog_path(@blog), notice: 'コメントを削除しました。' }
+      format.js { render :delete }
+    end
   end
 
   def edit
   end
 
   def update
-    @comment.update(comment_params)
       respond_to do |format|
         if @comment.update(comment_params)
           format.html { redirect_to blog_path(@blog), notice: 'コメントを訂正しました。' }

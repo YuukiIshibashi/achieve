@@ -1,1 +1,1 @@
-$( ('#<%= @comment.id %>' ) ).html('<%= j( render partial: 'comments/show', locals: { comment: @comment, blog: @blog } ) %>');
+$('#li_<%= @comment.id %>').html('<%= j( render partial: 'comments/show', locals: { comment: @comment, blog: @blog } ) %>');

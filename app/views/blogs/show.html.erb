@@ -24,7 +24,7 @@
     <ul id="comments_area">
       <% @comments.each do |comment| %>
       <% unless comment.id.nil? %>
-        <li id="<%= comment.id %>">
+        <li id="li_<%= comment.id %>">
             <%= render partial: 'comments/show', locals: { comment: comment, blog: @blog } %>
         </li>
         <% end %>
