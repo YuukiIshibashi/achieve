@@ -171,4 +171,10 @@ input[type="submit"].btn-block{
 }
 .user_img{
   width: 10%;
+  float: right;
+}
+.cf:after{
+  content: "";
+  display: block;
+  clear: both;
 }
