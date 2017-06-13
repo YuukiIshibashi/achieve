@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+
+  get 'relationships/create'
+
+  get 'relationships/destroy'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # get 'user/index'
 
@@ -7,7 +13,7 @@ Rails.application.routes.draw do
     registrations: "users/registrations",
     omniauth_callbacks: "users/omniauth_callbacks"
   }
-  resources :users, only: [:show] do
+  resources :users, only: [:index, :show] do
     end
   resources :blogs, shallow: true do
     resources :comments
@@ -23,6 +29,8 @@ Rails.application.routes.draw do
   end
 
   resources :poems, only: [:index, :show]
+
+  resources :relationships, only: [:create, :destroy]
 
   root 'top#index'
 
