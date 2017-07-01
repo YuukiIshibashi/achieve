@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+<% if @over_ten %>
+  <%= link_to '以前のメッセージ', '?m=all' %>
+<% end %>
+
+
+  <% @messages.each do |message| %>
+    <% if message.body %>
+      <% user = User.find(message.user_id) %>
+        <div class="content cf">
+
+        <div class="messageImg <%= messageType(user) %>"><%= profile_img(user) %></div>
+            <div class="messageBody <%= messageType(user) %>">
+              <%= message.body %>
+            </div>
+
+        </div>
+        <p class="<%= messageSmallType(user) %>"><strong><%= user.name %></strong> <%= message.message_time %></p>
+
+
+    <% end %>
+  <% end %>
+
+
+<%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
+  <div class="field">
+    <%= f.text_area :body, class: "form-control" %>
+  </div>
+    <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+  <div>
+    <%= f.submit "メッセージを送る" %>
+  </div>
+
+<% end %>
+  </div>
+</div>

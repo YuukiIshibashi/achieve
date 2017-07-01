@@ -1,0 +1,16 @@
+<div class="container">
+<h2>お知らせ</h2>
+<ul class="child">
+  <% @notifications.each do |notification| %>
+    <li class="row">
+      <p class="label <%= read_style(notification.read) %> col-xs-1 large"><%= read_or_unread(notification.read) %></p>
+      <p class="col-xs-2 col-sm-1"><%= profile_img(notification.comment.user) %></p>
+      <p class="col-xs-8 left">
+        <%= notification.comment.user.try(:name) %>さんが
+        あなたのブログ（<%= link_to "#{notification.comment.blog.title}", blog_path(notification.comment.blog, notification_id: notification.id) %>）にコメントしました。
+      </p>
+      <p class="col-xs-12 right small"><%= notification.created_at %></p>
+    </li>
+  <% end %>
+</ul>
+</div>

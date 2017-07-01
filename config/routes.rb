@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
 
-
-  get 'relationships/create'
-
-  get 'relationships/destroy'
+  get 'notifications/index'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # get 'user/index'
@@ -31,6 +28,12 @@ Rails.application.routes.draw do
   resources :poems, only: [:index, :show]
 
   resources :relationships, only: [:create, :destroy]
+
+  resources :conversations, only: [:index, :create], shallow: true do
+     resources :messages, only: [:index, :create] do
+      end
+     end
+  
 
   root 'top#index'
 
