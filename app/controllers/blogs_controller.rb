@@ -38,12 +38,14 @@ class BlogsController < ApplicationController
   def show
     @comment = @blog.comments.build
     @comments = @blog.comments
-    @comments = @comments.order("created_at")
+    @comments = @comments.order(:created_at)
     Notification.find(params[:notification_id]).update(read: true) if params[:notification_id]
   end
 
   def edit
-    # @blog = Blog.find(params[:id])
+    unless current_user ==  @blog.user
+      redirect_to blogs_path
+    end
   end
 
   def update
